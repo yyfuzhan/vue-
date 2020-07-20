@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 第一种情况：不需要参数的话 （）可省略 -->
+			<!-- <button @click="btn1Click()">按钮1</button> -->
+			<button @click="btn1Click">按钮1</button>
+			<!-- 第二种情况：需要参数如果有空的（），则返回undefined
+											需要传参，如果连（）都没有，则传入event事件对象-->
+			<button @click="btn2Click()">按钮2</button>
+			<!-- 第三种情况：定义方法时又需要event对象，也需要其他参数 -->
+			<!-- 在调用方式时，如何手动获取浏览器event对象：$event -->
+			<button @click="btn3Click(123,$event)">按钮3</button>
+		</div>
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'hello'
+				},
+				methods:{
+					btn1Click(){
+						console.log('btn1click')
+					},
+					btn2Click(abc){
+						console.log(abc)
+					},
+					btn3Click(abc,$event){
+						console.log(abc,event)
+					}
+				}
+				
+			})
+		
+		</script>
+	</body>
+</html>

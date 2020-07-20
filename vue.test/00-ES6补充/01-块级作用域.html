@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button>按钮1</button>
+		<button>按钮2</button>
+		<button>按钮3</button>
+		<button>按钮4</button>
+		<button onclick="getsum()">按钮5</button>
+		<h2 id="aa"></h2>
+		<script>
+			// var btns= document.getElementsByTagName('button')
+			// for(var i = 0; i<btns.length;i++){
+			// 	btns[i].addEventlistener('click',function(){
+			// 		console.log('第'+ i +'个按钮被点击')
+			// 	})
+			// }
+			function getsum(a,b) {
+				var sum = 0;
+				for (i = a ; i <= b; i++){
+					sum += i;
+				}
+				document.getElementById('aa').innerHTML=sum
+				getsum(1,100);
+			}
+		</script>
+	</body>
+</html>

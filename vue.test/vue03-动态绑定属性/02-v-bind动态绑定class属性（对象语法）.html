@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.active{
+				color: red;
+			}
+			.line{
+				color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+		<!-- <h2 class="active">{{message}}</h2>
+		<h2 :class="active">{{message}}</h2> -->
+		<h2 :class="{active: isActive,line:isLine}">{{message}}</h2>
+		<button @click="huan">button</button>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'hello',
+					isActive:true,
+					isLine:false					
+				},
+				methods:{
+					huan:function(){
+						this.isActive = ! this.isActive
+						this.isLine = ! this.isLine
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

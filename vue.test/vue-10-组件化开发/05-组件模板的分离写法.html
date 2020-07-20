@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+		</div>
+		<!-- 1.script标签 ，类型必须是x-text/x-template -->
+		<!-- 	<script type="text/x-template" id="cpn">
+			<div>
+				<h2>我是标题</h2>
+				<p>我是内容</p>
+			</div>
+		</script> -->
+		<!-- 2.template标签 -->
+		<template id="cpn">
+			<div>
+				<h2>我是标题</h2>
+				<p>我是内容</p>
+			</div>
+		</template>
+		<script src="../js/vue.js"></script>
+		<script>
+			//	1.全局组件分离写法
+			Vue.component('cpn', {
+				template: '#cpn',
+			})
+
+	//	2.局部组件分离写法
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: 'hello'
+				},
+				components: {
+					'cpn': {
+						template: '#cpn',
+					}
+				}
+
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">{{message}}</div>
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			//从数组中选出<100的数，将他们*2.将他们的总和输出
+			const nums=[10, 20, 30, 40, 111, 222, 333, 50, 80, 35]
+			//传统方法
+			// let newNums = []
+			// for (i of nums) {
+			// 	if (i < 100) {
+			// 		newNums.push(i)
+			// 	}
+			// }
+			// let new2Nums=[]
+			// for(i of newNums) {
+				
+			// 	new2Nums.push(i*2)
+			// }
+			// console.log(new2Nums)
+			
+			//用高阶函数做
+			// let newNums=nums.filter(function(n){
+			// 	return n<100 
+			// })
+			// console.log(newNums)
+			// let new2Nums=newNums.map(function(n){
+			// 	return n*2
+			// })
+			// console.log(new2Nums)
+			// let total=new2Nums.reduce(function(e,n){
+			// 	return e+n
+			// },0)
+			// console.log(total)
+			
+			//用高阶函数高效完成
+			let total = nums.filter(function(n){
+				return n<100
+			}).map(function(n){
+				return n*2
+			}).reduce(function(pre,n){
+				return pre+n
+			},0)
+			console.log(total)
+		</script>
+	</body>
+</html>

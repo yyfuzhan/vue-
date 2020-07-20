@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn :childnum1="num1" :childnum2="num2" @inputchange1="cpn1change" @inputchange2="cpn2change"></cpn>
+		</div>
+		<template id="cpn">
+			<div>
+				<h2>{{childnum1}}</h2>
+				<h2>{{dchildnum1}}</h2>
+				<!-- 双向绑定规定数字类型 -->
+				<input type="text" v-model.number="dchildnum1" @input="btn1(dchildnum1)">
+				<h2>{{childnum2}}</h2>
+				<h2>{{dchildnum2}}</h2>
+				<input type="text" v-model.number="dchildnum2" @input="btn2(dchildnum2)">
+			</div>
+		</template>
+		<script src="../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+						el: '#app',
+						data: {
+							num1: 1,
+							num2: 0
+						},
+						methods: {
+							cpn1change(dchildnum1) {
+								//接收子组件改变后传回来的数据
+								this.num1 = dchildnum1
+							},
+							cpn2change(dchildnum2) {
+								this.num2 = dchildnum2
+							}
+						},
+							components: {
+								cpn: {
+									template: '#cpn',
+									props: {
+										childnum1: Number,
+										childnum2: Number,
+									},
+									data() {
+										return {
+											dchildnum1: this.childnum1,
+											dchildnum2: this.childnum2
+										}
+									},
+									methods: {
+										btn1(dchildnum1) {
+											this.$emit('inputchange1', this.dchildnum1)
+											this.dchildnum2=this.dchildnum1*100
+											this.$emit('inputchange2', this.dchildnum2)
+										},
+										btn2(dchildnum2) {
+											this.$emit('inputchange2', this.dchildnum2)
+											this.dchildnum1=this.dchildnum2/100
+											this.$emit('inputchange1', this.dchildnum1)
+										}
+									}
+								}
+								
+							}
+						})
+		</script>
+	</body>
+</html>

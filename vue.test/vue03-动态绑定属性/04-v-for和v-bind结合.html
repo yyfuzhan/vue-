@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.aaa{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li  v-for="(item,index) in movies">{{index}}-{{item}}</li>
+				<li @click=""></li>
+			</ul>
+			
+		</div>
+		
+		<script src="../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					movies:['海王','黑猫警长','火影忍者','进击的巨人'],
+					active:'aaa'
+				},
+				methods:{
+					getclasses:function(){
+						return(this.active)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
